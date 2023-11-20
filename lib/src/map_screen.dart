@@ -15,6 +15,15 @@ class MapScreen extends StatefulWidget {
 class _MapScreenState extends State<MapScreen> {
   late final MapController _mapController;
 
+  List<LatLng> get _mapPoints => const [
+        LatLng(55.755793, 37.617134),
+        LatLng(55.095960, 38.765519),
+        LatLng(56.129038, 40.406502),
+        LatLng(54.513645, 36.261268),
+        LatLng(54.193122, 37.617177),
+        LatLng(54.629540, 39.741809),
+      ];
+
   @override
   void initState() {
     _mapController = MapController();
@@ -48,7 +57,7 @@ class _MapScreenState extends State<MapScreen> {
             options: MarkerClusterLayerOptions(
               size: const Size(50, 50),
               maxClusterRadius: 50,
-              markers: _getMarkers(),
+              markers: _getMarkers(_mapPoints),
               builder: (_, markers) {
                 return _ClusterMarker(
                   markersLength: markers.length.toString(),
@@ -63,16 +72,7 @@ class _MapScreenState extends State<MapScreen> {
 }
 
 /// Метод генерации маркеров
-List<Marker> _getMarkers() {
-  const mapPoints = [
-    LatLng(55.755793, 37.617134),
-    LatLng(55.095960, 38.765519),
-    LatLng(56.129038, 40.406502),
-    LatLng(54.513645, 36.261268),
-    LatLng(54.193122, 37.617177),
-    LatLng(54.629540, 39.741809),
-  ];
-
+List<Marker> _getMarkers(List<LatLng> mapPoints) {
   return List.generate(
     mapPoints.length,
     (index) => Marker(
