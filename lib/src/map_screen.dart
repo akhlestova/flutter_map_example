@@ -51,7 +51,7 @@ class _MapScreenState extends State<MapScreen> {
         children: [
           TileLayer(
             urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-            userAgentPackageName: 'dev.fleaflet.flutter_map.example',
+            userAgentPackageName: 'com.example.flutter_map_example', 
           ),
           MarkerClusterLayerWidget(
             options: MarkerClusterLayerOptions(
